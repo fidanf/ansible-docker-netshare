@@ -3,5 +3,12 @@
   gather_facts: yes
   become: yes
 
+  vars:
+    netshare_version: "0.36"
+    netshare_apt_url: https://github.com/ContainX/docker-volume-netshare/releases/download/v{{ netshare_version }}/docker-volume-netshare_{{ netshare_version }}_amd64.deb
+
   tasks:
-  # TODO
+    - name: apt | download .deb file
+      apt:
+        deb: "{{ netshare_apt_url }}"
+        state: present
