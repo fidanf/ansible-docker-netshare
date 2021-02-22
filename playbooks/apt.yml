@@ -1,0 +1,21 @@
+---
+- hosts: docker
+  become: yes
+  gather_facts: yes
+
+  vars:
+    apt_pkgs:
+      - wget
+      - curl
+      - rsync
+      - net-tools
+      - unzip
+      - apt-transport-https
+      - python3-apt
+
+  tasks:
+    - name: apt | install common packages
+      apt:
+        package: "{{ apt_pkgs }}"
+        state: present
+      tags: ['packages']

@@ -1,0 +1,23 @@
+---
+- hosts: all
+  gather_facts: yes
+  become: yes
+
+  pre_tasks:
+    - name: Ensure platform is supported
+      fail:
+        msg: OS Platform is not supported! Abort.
+      when: not ansible_os_family == 'Debian'
+
+    - name: Ensure Python3 is used by default
+      alternatives:
+        path: /usr/bin/python3
+        link: /usr/bin/python
+        priority: 1
+        name: python
+
+- import_playbook: apt.yml
+- import_playbook: git.yml
+- import_playbook: users.yml
+- import_playbook: pip.yml
+- import_playbook: docker.yml

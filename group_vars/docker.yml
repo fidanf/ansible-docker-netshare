@@ -1,0 +1,19 @@
+---
+# Role : geerlingguy.pip
+pip_package: python3-pip
+pip_install_packages:
+  - name: pip
+    state: latest
+  - name: cryptography
+    state: present
+  - name: docker
+    state: present
+  - name: docker-compose
+    state: present
+
+# Role : geerlingguy.docker
+docker_install_compose: true
+docker_compose_version: "1.28.4"
+docker_compose_path: /usr/local/bin/docker-compose
+docker_users:
+  - openwt

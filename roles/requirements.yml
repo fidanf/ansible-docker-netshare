@@ -1,0 +1,24 @@
+---
+roles:
+  - src: https://github.com/geerlingguy/ansible-role-pip
+    name: geerlingguy.pip
+    version: 2.0.0
+
+  - src: https://github.com/geerlingguy/ansible-role-docker
+    name: geerlingguy.docker
+    version: 2.8.2
+
+  - src: https://github.com/weareinteractive/ansible-users
+    name: weareinteractive.users
+    version: 1.15.0
+
+  - src: https://github.com/weareinteractive/ansible-sudo
+    name: weareinteractive.sudo
+    version: 1.14.1
+
+  - src: https://github.com/geerlingguy/ansible-role-git
+    name: geerlingguy.git
+    version: 3.0.0
+
+collections:
+  - community.general

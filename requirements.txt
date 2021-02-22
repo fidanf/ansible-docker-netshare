@@ -1,0 +1,14 @@
+ansible>=2.10
+molecule==3.0.8
+molecule-vagrant==0.3
+python-vagrant
+ansible-lint==4.3.7
+yamllint==1.26.0
+docker
+docker-compose
+netaddr
+dnspython
+cryptography
+jsondiff
+pyyaml
+pyOpenSSL

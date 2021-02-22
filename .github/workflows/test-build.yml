@@ -1,0 +1,25 @@
+---
+name: test-build
+
+on:
+  repository_dispatch: 
+    types: test-build
+  pull_request:
+    branches:
+      - '*'
+
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+      - name: Prepare 
+        shell: bash
+        run: |
+          pip install --upgrade yamllint==1.26.0 ansible-lint==4.3.7
+      - name: Run tests
+        shell: bash
+        run: |
+          yamllint .
+          ansible-lint

@@ -1,0 +1,9 @@
+---
+# Role : weareinteractive.users
+users:
+  - username: openwt
+    password: $6$3fz4aPSuzuFA$QpqdoXnn2UtOp7qMLBO/y1dohqXL2/A2nIMROqVx/fmJMTbIXKdse7492HGOJg9aefOoW5qY6QCETH0nt5tnx1 # defaults to 'openwt'
+    home: /home/openwt
+    shell: /bin/bash
+    update_password: always
+users_remove: []
