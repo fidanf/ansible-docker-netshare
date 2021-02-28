@@ -17,7 +17,7 @@ jobs:
       - name: Prepare 
         shell: bash
         run: |
-          pip install --upgrade yamllint==1.25.0 ansible-lint==4.3.7
+          pip install --upgrade yamllint==1.25.0 ansible-lint==4.2.0
       - name: Run tests
         shell: bash
         run: |
