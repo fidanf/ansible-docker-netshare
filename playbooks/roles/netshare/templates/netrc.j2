@@ -1,0 +1,21 @@
+{{ ansible_managed | comment }}
+{% for item in netshare_netrc_config %}
+machine {{ item.hostname }}
+      username  {{ item.username }}
+      password  {{ item.password }}
+      {% if item.domain is defined %}
+      domain    {{ item.domain }}
+      {% endif %}
+      {% if item.domain is defined %}
+      domain    {{ item.domain }}
+      {% endif %}
+      {% if item.security is defined %}
+      security    {{ item.security }}
+      {% endif %}
+      {% if item.filemode is defined %}
+      fileMode    {{ item.filemode }}
+      {% endif %}
+      {% if item.dirmode is defined %}
+      dirMode    {{ item.dirmode }}
+      {% endif %}
+{% endfor %}

@@ -1,4 +1,5 @@
-ansible>=2.10
+ansible
+ansible-base
 molecule==3.0.8
 molecule-vagrant==0.3
 python-vagrant
