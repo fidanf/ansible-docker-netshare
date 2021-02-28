@@ -13,14 +13,14 @@
   template:
     src: netrc.j2
     dest: /root/.netrc
-    mode: 600
+    mode: 0600
   when: netshare_netrc_config|length>0 and netshare_start_opt == 'cifs'
 
 - name: systemd | upload service file
   template:
     src: systemd.j2
     dest: /lib/systemd/system/docker-volume-netshare.service
-    mode: 644
+    mode: 0644
 
 - name: systemd | start service
   systemd:
