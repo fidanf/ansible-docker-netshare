@@ -1,0 +1,38 @@
+---
+- name: apt | install dependencies
+  apt:
+    name: "{{ netshare_dependencies }}"
+    state: present 
+
+- name: apt | download .deb file
+  apt:
+    deb: "{{ netshare_apt_url }}"
+    state: present
+
+- name: config | upload .netrc file
+  template:
+    src: netrc.j2
+    dest: /root/.netrc
+    mode: 600
+  when: netshare_netrc_config|length>0 and netshare_start_opt == 'cifs'
+
+- name: systemd | upload service file
+  template:
+    src: systemd.j2
+    dest: /lib/systemd/system/docker-volume-netshare.service
+    mode: 644
+
+- name: systemd | start service
+  systemd:
+    name: docker-volume-netshare
+    state: started
+    enabled: yes
+    daemon-reload: yes
+
+- name: docker volume | create netshare volume
+  docker_volume:
+    name: "{{ netshare_volume_config.volume_name }}"
+    driver: "{{ netshare_volume_config.driver }}"
+    driver_options: "{{ netshare_volume_config.driver_options }}"
+    state: present
+  when: netshare_volume_config|length>0
