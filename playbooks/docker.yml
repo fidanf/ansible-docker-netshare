@@ -4,4 +4,4 @@
   become: yes
 
   roles:
-    - name: geerlingguy.docker
+    - name: atosatto.docker
