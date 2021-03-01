@@ -1,4 +1,9 @@
 ---
-docker:
+docker_swarm_manager:
   hosts:
     docker[01:03]:
+docker_swarm_worker:
+docker_engine:
+  children:
+    docker_swarm_manager:
+    docker_swarm_worker:

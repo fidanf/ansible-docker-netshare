@@ -1,0 +1,27 @@
+---
+# Role : geerlingguy.pip
+pip_package: python3-pip
+pip_install_packages:
+  - name: pip
+    state: latest
+  - name: cryptography
+    state: present
+  - name: docker
+    state: present
+  - name: docker-compose
+    state: present
+
+# Role : atosatto.docker
+docker_swarm_interface: eth1
+docker_group_users: 
+  - ansible
+  - vagrant
+  - openwt
+docker_daemon_config: 
+  experimental: true
+  metrics-addr: "0.0.0.0:9323"
+  dns-opts:
+    - ndots:1
+docker_compose_version: "1.28.4"
+skip_docker_py: yes
+skip_swarm: false
