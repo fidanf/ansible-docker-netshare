@@ -29,16 +29,16 @@ Example Playbook
 
   roles:
     - name: docker-volume-netshare
-    vars:
-      dvn_start_opt: cifs
-      dvn_volume_config:
-        name: samba/share
-        driver: cifs
-        driver_options:
-          username: "user"
-          password: "pass"
-          fileMode: "0777"
-          dirMode: "0777"
+      vars:
+        dvn_start_opt: cifs
+        dvn_volume_config:
+          name: samba/share
+          driver: cifs
+          driver_options:
+            username: "user"
+            password: "pass"
+            fileMode: "0777"
+            dirMode: "0777"
 
 ```
 
