@@ -24,8 +24,9 @@
 
 - name: docker volume | create netshare volume
   docker_volume:
-    name: "{{ dvn_volume_config.name }}"
-    driver: "{{ dvn_volume_config.driver }}"
-    driver_options: "{{ dvn_volume_config.driver_options }}"
+    name: "{{ item.name }}"
+    driver: "{{ item.driver }}"
+    driver_options: "{{ item.driver_options | default(omit) }}"
     state: present
-  when: dvn_volume_config|length>0
+  loop: "{{ dvn_volumes_config }}"
+  when: dvn_volumes_config|length>0
