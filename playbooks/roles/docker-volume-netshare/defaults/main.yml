@@ -5,14 +5,6 @@ dvn_dependencies:
 dvn_version: "0.36"
 dvn_start_opt: nfs # nfs or cifs
 dvn_apt_url: https://github.com/ContainX/docker-volume-netshare/releases/download/v{{ dvn_version }}/docker-volume-netshare_{{ dvn_version }}_amd64.deb
-# List variable to generate .netrc file from. See https://github.com/ContainX/docker-volume-netshare#netrc-support 
-# dvn_netrc_config:
-#   - hostname: localhost
-#     username: foo
-#     password: bar
-#     fileMode: 0777
-#     dirMode: 0777
-dvn_netrc_config: []
 # Creates Docker volume using driver plugin. See : https://github.com/ContainX/docker-volume-netshare#docker-version-190 
 # Ex :
 # dvn_volume_config:
