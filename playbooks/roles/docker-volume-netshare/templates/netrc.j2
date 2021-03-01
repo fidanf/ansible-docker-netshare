@@ -1,5 +1,5 @@
 {{ ansible_managed | comment }}
-{% for item in netshare_netrc_config %}
+{% for item in dvn_netrc_config %}
 machine {{ item.hostname }}
       username  {{ item.username }}
       password  {{ item.password }}
