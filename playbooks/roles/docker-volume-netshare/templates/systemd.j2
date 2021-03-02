@@ -7,7 +7,7 @@ Before=docker.service
 Requires=nfs-utils.service
 
 [Service]
-ExecStart=/usr/bin/docker-volume-netshare {{ netshare_start_opt }}
+ExecStart=/usr/bin/docker-volume-netshare {{ dvn_start_opt }}
 StandardOutput=syslog
 
 [Install]

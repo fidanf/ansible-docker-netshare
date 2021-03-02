@@ -4,4 +4,4 @@
   become: yes
 
   roles:
-    - name: netshare
+    - name: docker-volume-netshare

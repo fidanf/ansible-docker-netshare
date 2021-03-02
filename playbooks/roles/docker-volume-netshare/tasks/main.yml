@@ -1,0 +1,32 @@
+---
+- name: apt | install dependencies
+  apt:
+    name: "{{ dvn_dependencies }}"
+    state: present 
+
+- name: apt | download .deb file
+  apt:
+    deb: "{{ dvn_apt_url }}"
+    state: present
+
+- name: systemd | upload service file
+  template:
+    src: systemd.j2
+    dest: /lib/systemd/system/docker-volume-netshare.service
+    mode: 0644
+  notify: restart docker-volume-netshare
+
+- name: systemd | start service
+  systemd:
+    name: docker-volume-netshare
+    state: started
+    enabled: yes
+
+- name: docker volume | create netshare volume
+  docker_volume:
+    name: "{{ item.name }}"
+    driver: "{{ item.driver }}"
+    driver_options: "{{ item.driver_options | default(omit) }}"
+    state: present
+  loop: "{{ dvn_volumes_config }}"
+  when: dvn_volumes_config|length>0
